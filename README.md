@@ -17,10 +17,10 @@ There may not an application that allows access to movie data, song data, and co
 
 To run the app, execute Node.JS on liri.js, and input one of the following arguments:
 
-concert-this (band name)
-spotify-this-song (song name)
-movie-this (movie name)
-do-what-it-says
+- concert-this (band name)
+- spotify-this-song (song name)
+- movie-this (movie name)
+- do-what-it-says
 
 For each of the above, add additional arguments according to the type specified in parentheses above.  The fourth option is run based off of what is in the random.txt file.  
 
