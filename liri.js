@@ -7,11 +7,20 @@ var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
 var axios = require("axios");
+
 var moment = require('moment');
+
+var fs = require("fs");
 
 var selection = process.argv[2];
 
 var input = process.argv.slice(3).join(" ");
+
+//Only used for do-what-it-says:
+
+var whichAppFromTextFile;
+var yourSearchFromTextFile;
+
 
 switch (selection) {
     case ("concert-this"):
@@ -27,8 +36,27 @@ switch (selection) {
         break;
 
     case ("do-what-it-says"):
-        doWhatItSays(input);
+        doWhatItSays(theCallback);
+        function theCallback() {
+            switch (whichAppFromTextFile) {
+                case ("concert-this"):
+                concert(yourSearchFromTextFile);
+                break;
+        
+                case ("spotify-this-song"):
+                doSpotify(yourSearchFromTextFile);
+                break;
+        
+                case ("movie-this"):
+                movieThis(yourSearchFromTextFile);
+                break;
+                
+                default: 
+                console.log("Invalid Data in Text file");
+            }
+        }
         break;
+        
 
     case ("help"):
         console.log("\nPlease input one of the following, followed by a musical artist, song, or movie(in the case of the first three options): ");
@@ -109,7 +137,16 @@ function doSpotify(a) {var songSearch = a;
    });
 }
 
-
-function doWhatItSays(a) {
-
+function doWhatItSays(callback) {
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        if (err) {
+          return console.log(err);
+        }
+        //have to store the split data into an object (data form changed from string to array), so you can use it below
+        var arrayFromSplit = data.split(",");
+        whichAppFromTextFile = arrayFromSplit[0].trim();
+        yourSearchFromTextFile = arrayFromSplit[1].trim();
+        callback();
+      });
 }
+
