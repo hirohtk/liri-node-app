@@ -21,22 +21,37 @@ var input = process.argv.slice(3).join(" ");
 var whichAppFromTextFile;
 var yourSearchFromTextFile;
 
+let timeNow = moment().format("LLLL");
+
+var toLog = "\n\n***Logged at " + timeNow + "\n      You Selected: " + selection + "\n      You Queried: " + input + "\n" + "--> Data returned was... \n";
+
+function log() {
+    fs.appendFile("log.txt", toLog, function(err) {
+        if (err) {
+          return console.log(err);
+        }
+    });
+}
 
 switch (selection) {
     case ("concert-this"):
         concert(input);
+        log();
         break;
 
     case ("spotify-this-song"):
         doSpotify(input);
+        log();
         break;
 
     case ("movie-this"):
         movieThis(input);
+        log();
         break;
 
     case ("do-what-it-says"):
         doWhatItSays(theCallback);
+        log();
         function theCallback() {
             switch (whichAppFromTextFile) {
                 case ("concert-this"):
@@ -91,8 +106,13 @@ function concert(a) {
                 }
                 console.log("Date of Event: " + convertedDate);
                 console.log("\n");
+                var result = "Venue # " + i + "\nName of Venue: " + response.data[i].venue.name + "\nVenue Location: " + response.data[i].venue.city + ", " + response.data[i].venue.country + "\nDate of Event: " + convertedDate + "\n";
+                fs.appendFile("log.txt", result, function(err) {
+                    if (err) {
+                      return console.log(err);
+                    }
+                  });
             }
-
         }
     );
 }
@@ -115,13 +135,20 @@ function movieThis(a) {
             else {
                 console.log("This movie was produced in " + response.data.Country);
             }
-            console.log("This movie was produced in " + response.data.Language);
+            console.log("This movie was produced in the language of " + response.data.Language);
             console.log("\nHere's a short description of the movie's plot: " + "\n\n" + response.data.Plot);
             console.log("\nThe actors/actresses in this movie are: " + "\n" + response.data.Actors + "\n");
+            var result = "\n" + "Movie Title: " + response.data.Title + "\nThis movie came out in " + response.data.Year + "." + "\nThe IMDB rating for this movie is " + response.data.imdbRating + "\nThe " + response.data.Ratings[1].Source + " rating for this movie is " + response.data.Ratings[1].Value + "\nThis movie was produced in " + response.data.Country + "\nThis movie was produced in the language of " + response.data.Language + "\nHere's a short description of the movie's plot: " + "\n\n" + response.data.Plot + "\nThe actors/actresses in this movie are: " + "\n" + response.data.Actors + "\n";
+            fs.appendFile("log.txt", result, function(err) {
+                if (err) {
+                  return console.log(err);
+                }
+              });
         });
 }
 
-function doSpotify(a) {var songSearch = a;
+function doSpotify(a) {
+    var songSearch = a;
     if (songSearch.length === 0) {
         a = "Ace of Base The Sign"
     }
@@ -134,7 +161,14 @@ function doSpotify(a) {var songSearch = a;
     console.log("Song Title is: " + spotifyPath[0].name);
     console.log("Spotify Preview Link: " + spotifyPath[0].preview_url);
     console.log("Song is on the album named: " + spotifyPath[0].album.name); 
-   });
+    var result = "\nArtist Name: " + spotifyPath[0].artists[0].name + "\nSong Title is: " + spotifyPath[0].name + "\nSpotify Preview Link: " + spotifyPath[0].preview_url + "\nSong is on the album named: " + spotifyPath[0].album.name;
+    fs.appendFile("log.txt", result, function(err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
+});
+   
 }
 
 function doWhatItSays(callback) {

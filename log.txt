@@ -1,0 +1,28 @@
+
+
+***Logged at Sunday, October 27, 2019 5:52 PM
+      You Selected: do-what-it-says
+      You Queried: 
+--> Data returned was... 
+
+Artist Name: Backstreet Boys
+Song Title is: I Want It That Way
+Spotify Preview Link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=2eecd783aacc4761818529ac1433a35e
+Song is on the album named: The Hits--Chapter One
+
+***Logged at Sunday, October 27, 2019 5:52 PM
+      You Selected: movie-this
+      You Queried: john wick
+--> Data returned was... 
+
+Movie Title: John Wick
+This movie came out in 2014.
+The IMDB rating for this movie is 7.4
+The Rotten Tomatoes rating for this movie is 87%
+This movie was produced in USA
+This movie was produced in the language of English, Russian, Hungarian
+Here's a short description of the movie's plot: 
+
+An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took everything from him.
+The actors/actresses in this movie are: 
+Keanu Reeves, Michael Nyqvist, Alfie Allen, Willem Dafoe
