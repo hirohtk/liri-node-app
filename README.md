@@ -26,5 +26,5 @@ For each of the above, add additional arguments according to the type specified 
 
 Videos that go through the file to explain the assignment are as follows:
 
-Part 1 (6 mins 30 seconds): https://drive.google.com/file/d/1XneX4S8Y5hirtcR62JClyr8lIJ7p88kD/view
-Part 2 (1 minute 30 seconds): https://drive.google.com/file/d/1kFIh5_XDrbAwX9YmS-nz4Odc6J8ERiMN/view
+- Part 1 (6 mins 30 seconds): https://drive.google.com/file/d/1XneX4S8Y5hirtcR62JClyr8lIJ7p88kD/view
+- Part 2 (1 minute 30 seconds): https://drive.google.com/file/d/1kFIh5_XDrbAwX9YmS-nz4Odc6J8ERiMN/view
